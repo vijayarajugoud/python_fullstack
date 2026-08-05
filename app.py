@@ -29,5 +29,27 @@ def register():
 @app.route("/trainers")
 def trainers():
     return render_template("trainers.html")
+@app.route("/api/register", methods=["POST"])
+def api_register():
+    data = request.get_json()
+    email = data.get("email")
+    if email in users_dp:
+        return jsonify({"status": "error", "message": "Email already exists."}), 400
+    users_dp[email] = data
+    return jsonify({"status": "success", "message": "Registration successful!"})
+
+
+@app.route('/api/login', methods=['POST'])
+def api_login():
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+
+    user = users_dp.get(email)
+    if user and user['password'] == password:
+        return jsonify({"status": "success", "message": "Login successful! welcome back."})
+    else:
+        return jsonify({"status": "error", "message": "Invalid email or password."}), 401
+
 if __name__=='__main__':
     app.run(debug=True)

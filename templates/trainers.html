@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url for('static',filename='css/static/style.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Trainers page</title>
 </head>
 
@@ -27,10 +27,10 @@
         <section>
             <h2>Meet Our Trainers</h2>
             <article>
-                <img src="images/trainer1.jpg" alt="Python Trainer" width="180">
-                <h3>Mr. Vijay</h3>
-                <p>Python Full Stack Trainer</p>
-                <p>Experience: 4+ years</p>
+                <img id="trainerImage" src="{{ url_for('static', filename='image/banner.jpg') }}" alt="Python Trainer" width="180">
+                <h3 id="trainerName">Mr. Vijay</h3>
+                <p id="trainerRole">Python Full Stack Trainer</p>
+                <p id="trainerExp">Experience: 4+ years</p>
             </article>
         </section>
     </main>
@@ -53,7 +53,7 @@
         <a href="#">LinkedIn</a>
 
     </footer>
-    <script src="{{url for('static'.filename='js/script.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>
 
